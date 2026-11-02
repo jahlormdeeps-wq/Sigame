@@ -1,0 +1,169 @@
+{
+  "entities": {
+    "user": {
+      "title": "User",
+      "description": "User account profile in Asigame Marketplace",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string" },
+        "email": { "type": "string" },
+        "displayName": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time", "description": "FieldValue.serverTimestamp()" },
+        "updatedAt": { "type": "string", "format": "date-time", "description": "FieldValue.serverTimestamp()" }
+      },
+      "required": ["userId", "createdAt"]
+    },
+    "seller": {
+      "title": "Seller",
+      "description": "Registered local Ghanaian merchant profile",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "ownerUid": { "type": "string" },
+        "businessName": { "type": "string" },
+        "ownerName": { "type": "string" },
+        "category": { "type": "string" },
+        "region": { "type": "string" },
+        "phone": { "type": "string" },
+        "whatsapp": { "type": "string" },
+        "email": { "type": "string" },
+        "verified": { "type": "boolean" },
+        "rating": { "type": "number" },
+        "reviewCount": { "type": "integer" },
+        "bio": { "type": "string" },
+        "badge": { "type": "string" },
+        "specialties": { "type": "array" },
+        "createdAt": { "type": "string", "format": "date-time", "description": "FieldValue.serverTimestamp()" },
+        "updatedAt": { "type": "string", "format": "date-time", "description": "FieldValue.serverTimestamp()" }
+      },
+      "required": ["id", "ownerUid", "businessName", "ownerName", "category", "region", "phone", "createdAt"]
+    },
+    "product": {
+      "title": "Product",
+      "description": "Marketplace product or service listing in Ghana Cedis",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "sellerId": { "type": "string" },
+        "sellerUid": { "type": "string" },
+        "title": { "type": "string" },
+        "description": { "type": "string" },
+        "categoryId": { "type": "string" },
+        "priceGhs": { "type": "number" },
+        "isService": { "type": "boolean" },
+        "rating": { "type": "number" },
+        "reviewCount": { "type": "integer" },
+        "inStock": { "type": "boolean" },
+        "location": { "type": "string" },
+        "highlights": { "type": "array" },
+        "badge": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time", "description": "FieldValue.serverTimestamp()" },
+        "updatedAt": { "type": "string", "format": "date-time", "description": "FieldValue.serverTimestamp()" }
+      },
+      "required": ["id", "sellerId", "sellerUid", "title", "categoryId", "priceGhs", "createdAt"]
+    },
+    "review": {
+      "title": "Review",
+      "description": "Verified customer review and rating for product or seller",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "targetId": { "type": "string" },
+        "targetType": { "type": "string", "enum": ["PRODUCT", "SELLER"] },
+        "authorUid": { "type": "string" },
+        "authorName": { "type": "string" },
+        "rating": { "type": "integer" },
+        "comment": { "type": "string" },
+        "date": { "type": "string" },
+        "isVerifiedPurchase": { "type": "boolean" },
+        "helpfulCount": { "type": "integer" },
+        "createdAt": { "type": "string", "format": "date-time", "description": "FieldValue.serverTimestamp()" }
+      },
+      "required": ["id", "targetId", "targetType", "authorUid", "authorName", "rating", "comment", "createdAt"]
+    },
+    "order": {
+      "title": "Order",
+      "description": "Completed customer purchase order",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "orderNumber": { "type": "string" },
+        "customerUid": { "type": "string" },
+        "customerName": { "type": "string" },
+        "customerPhone": { "type": "string" },
+        "deliveryAddress": { "type": "string" },
+        "paymentMethod": { "type": "string" },
+        "totalGhs": { "type": "number" },
+        "status": { "type": "string" },
+        "date": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time", "description": "FieldValue.serverTimestamp()" }
+      },
+      "required": ["id", "orderNumber", "customerUid", "customerName", "customerPhone", "totalGhs", "createdAt"]
+    },
+    "seller_application": {
+      "title": "SellerApplication",
+      "description": "Application from merchant seeking to sell on Asigame",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "applicantUid": { "type": "string" },
+        "businessName": { "type": "string" },
+        "ownerName": { "type": "string" },
+        "category": { "type": "string" },
+        "region": { "type": "string" },
+        "phone": { "type": "string" },
+        "email": { "type": "string" },
+        "description": { "type": "string" },
+        "status": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time", "description": "FieldValue.serverTimestamp()" }
+      },
+      "required": ["id", "applicantUid", "businessName", "ownerName", "category", "region", "phone", "createdAt"]
+    },
+    "enquiry": {
+      "title": "Enquiry",
+      "description": "Customer inquiry message sent to a merchant",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "sellerId": { "type": "string" },
+        "customerUid": { "type": "string" },
+        "customerName": { "type": "string" },
+        "customerPhone": { "type": "string" },
+        "subject": { "type": "string" },
+        "message": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time", "description": "FieldValue.serverTimestamp()" }
+      },
+      "required": ["id", "sellerId", "customerUid", "customerName", "subject", "message", "createdAt"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": "user",
+      "description": "User profiles collection"
+    },
+    "/sellers/{sellerId}": {
+      "schema": "seller",
+      "description": "Verified and registered sellers"
+    },
+    "/products/{productId}": {
+      "schema": "product",
+      "description": "Active marketplace product catalog"
+    },
+    "/reviews/{reviewId}": {
+      "schema": "review",
+      "description": "Product and seller ratings and reviews"
+    },
+    "/orders/{orderId}": {
+      "schema": "order",
+      "description": "Customer orders collection"
+    },
+    "/seller_applications/{applicationId}": {
+      "schema": "seller_application",
+      "description": "Seller registration applications"
+    },
+    "/enquiries/{enquiryId}": {
+      "schema": "enquiry",
+      "description": "Customer inquiries sent to sellers"
+    }
+  }
+}

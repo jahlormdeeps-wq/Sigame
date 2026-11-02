@@ -1,0 +1,8 @@
+{
+  "name": "Remix Asigame Marketplace",
+  "description": "Discover products, services, and local Ghanaian businesses all in one place. Connect, shop, and grow your business today.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
